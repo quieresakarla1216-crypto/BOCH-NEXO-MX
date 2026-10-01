@@ -37,8 +37,8 @@ http://localhost:8000
 
 - `index.html` – landing page principal
 - `styles.css` – estilos visuales y responsive
-- `script.js` – interactividad y actualización simple
+- `script.js` – interactividad con selector de precios y años
 
 ## Estado
 
-El sitio web base ya quedó implementado con una landing page institucional y diseño moderno para la suite cripto.
+La landing page premium quedó implementada con diseño moderno, panel estadístico, pricing y secciones de producto más orientadas a una suite profesional.

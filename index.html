@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BOCH-NEXO-MX | Crypto Suite</title>
+    <title>BOCH-NEXO-MX | Suite Cripto + IA</title>
     <meta
       name="description"
-      content="BOCH-NEXO-MX es una suite integral para México con terminal web, IA Llama, APIs cripto, wallet descentralizada y entorno Linux móvil."
+      content="BOCH-NEXO-MX combina terminal web, IA Llama, APIs cripto, wallet descentralizada y automatización para operar con confianza en el ecosistema Web3."
     />
+    <meta name="theme-color" content="#08131d" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,48 +23,60 @@
 
     <header class="site-header">
       <div class="container nav">
-        <div class="brand">
+        <a href="#top" class="brand" aria-label="Ir al inicio">
           <span class="brand-mark">B</span>
           <span>BOCH-NEXO-MX</span>
-        </div>
+        </a>
 
-        <nav class="nav-menu">
+        <nav class="nav-menu" aria-label="Navegación principal">
           <a href="#features">Funciones</a>
           <a href="#stack">Stack</a>
-          <a href="#wallet">Wallet</a>
-          <a href="#roadmap">Roadmap</a>
+          <a href="#dashboard">Dashboard</a>
+          <a href="#pricing">Precios</a>
         </nav>
 
-        <a class="btn btn-primary" href="#contact">Acceder</a>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="#contact">Contacto</a>
+          <a class="btn btn-primary" href="#pricing">Acceder</a>
+        </div>
       </div>
     </header>
 
-    <main>
+    <main id="top">
       <section class="hero">
         <div class="container hero-grid">
           <div class="hero-copy">
             <span class="eyebrow">Crypto Suite • IA • Web3 • México</span>
-            <h1>El sistema cripto + IA más completo para operar con confianza.</h1>
+            <h1>La plataforma inteligente para operar cripto con control total.</h1>
             <p>
-              Terminal web, orquestación de APIs, análisis on-chain, wallet
-              descentralizada y entorno de trabajo Linux móvil todo en un mismo
-              ecosistema.
+              BOCH-NEXO-MX reúne terminal web, IA Llama, APIs de mercado,
+              wallet descentralizada y entorno móvil para convertir datos,
+              automatización y análisis en decisiones más rápidas y seguras.
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#features">Explorar suite</a>
-              <a class="btn btn-secondary" href="#wallet">Ver demo</a>
+              <a class="btn btn-primary" href="#pricing">Probar suite</a>
+              <a class="btn btn-secondary" href="#dashboard">Ver demo</a>
             </div>
 
             <ul class="hero-metrics">
-              <li><strong>24/7</strong><span>Monitoreo</span></li>
-              <li><strong>8+</strong><span>Fuentes de datos</span></li>
-              <li><strong>100%</strong><span>Web3-ready</span></li>
+              <li>
+                <strong>24/7</strong>
+                <span>Monitoreo</span>
+              </li>
+              <li>
+                <strong>8+</strong>
+                <span>Fuentes de datos</span>
+              </li>
+              <li>
+                <strong>100%</strong>
+                <span>Web3 ready</span>
+              </li>
             </ul>
           </div>
 
-          <div class="hero-visual">
-            <div class="dashboard-panel">
+          <div class="hero-visual" aria-label="Dashboard de BOCH-NEXO-MX">
+            <div class="dashboard-panel glass-panel">
               <div class="panel-topbar">
                 <span class="dot red"></span>
                 <span class="dot amber"></span>
@@ -92,13 +105,15 @@
                 </div>
               </div>
 
-              <div class="mini-bars" aria-label="Indicadores de mercado">
-                <span style="--h: 58%"></span>
+              <div class="mini-chart" aria-hidden="true">
+                <span style="--h: 28%"></span>
+                <span style="--h: 46%"></span>
+                <span style="--h: 39%"></span>
                 <span style="--h: 72%"></span>
-                <span style="--h: 49%"></span>
-                <span style="--h: 88%"></span>
                 <span style="--h: 66%"></span>
                 <span style="--h: 92%"></span>
+                <span style="--h: 58%"></span>
+                <span style="--h: 82%"></span>
               </div>
             </div>
           </div>
@@ -124,61 +139,55 @@
         <div class="container">
           <div class="section-heading">
             <span class="eyebrow">Funciones</span>
-            <h2>Todo lo que necesitas para operar en cripto y IA</h2>
+            <h2>Todo lo necesario para operar de forma inteligente.</h2>
           </div>
 
           <div class="feature-grid">
-            <article class="feature-card">
+            <article class="feature-card glass-panel">
               <div class="icon">🧠</div>
               <h3>AI Llama</h3>
               <p>
-                Agentes inteligentes para análisis de mercado, resúmenes,
-                automatización y asistencia ejecutiva.
+                Asistencia inteligente para análisis, automatización y toma de decisiones con contexto en tiempo real.
               </p>
             </article>
 
-            <article class="feature-card">
+            <article class="feature-card glass-panel">
               <div class="icon">📡</div>
               <h3>APIs cripto</h3>
               <p>
-                Integración con CoinGecko, CryptoMarket, Etherscan y Mempool para
-                datos en tiempo real.
+                CoinGecko, CryptoMarket, Etherscan y Mempool integrados para mover datos y señales desde múltiples fuentes.
               </p>
             </article>
 
-            <article class="feature-card">
+            <article class="feature-card glass-panel">
               <div class="icon">🔐</div>
-              <h3>Wallet descentralizado</h3>
+              <h3>Wallet descentralizada</h3>
               <p>
-                Gestión segura de claves, balances y transacciones con un enfoque
-                controlado por el usuario.
+                Gestión segura de balances, transacciones y activos con un enfoque orientado al usuario final.
               </p>
             </article>
 
-            <article class="feature-card">
+            <article class="feature-card glass-panel">
               <div class="icon">🖥️</div>
               <h3>Terminal web</h3>
               <p>
-                Panel de control para ejecutar tareas, operar scripts y potenciar
-                flujos de trabajo desde el navegador.
+                Operación centralizada para ejecutar comandos, tareas y flujos desde un panel visual moderno.
               </p>
             </article>
 
-            <article class="feature-card">
+            <article class="feature-card glass-panel">
               <div class="icon">📱</div>
               <h3>Termux + ISH</h3>
               <p>
-                Entorno móvil y Linux para ejecutar comandos, tools y flujos de
-                automatización en cualquier dispositivo.
+                Ecosistema Android y Linux que permite automatización, scripting y operaciones móviles avanzadas.
               </p>
             </article>
 
-            <article class="feature-card">
+            <article class="feature-card glass-panel">
               <div class="icon">⚙️</div>
               <h3>Automatización</h3>
               <p>
-                Pipelines de observabilidad, alertas, monitorización y control de
-                procesos apalancados por AI.
+                Alertas, workflows y supervisión constante para procesar datos y reaccionar rápidamente ante cambios.
               </p>
             </article>
           </div>
@@ -189,98 +198,123 @@
         <div class="container stack-layout">
           <div>
             <span class="eyebrow">Stack</span>
-            <h2>Arquitectura preparada para producción</h2>
+            <h2>Arquitectura preparada para operación real y crecimiento.</h2>
             <p>
-              Combina herramientas web modernas, datos on-chain, capacidades de IA
-              y automatización para crear un ecosistema operativo real.
+              Integración de datos on-chain, IA, automatización y entorno móvil para crear una suite operativa y escalable.
             </p>
           </div>
 
           <div class="stack-list">
-            <div class="stack-item"><span>Frontend</span><strong>HTML / CSS / JS</strong></div>
-            <div class="stack-item"><span>IA</span><strong>Llama / agentes</strong></div>
-            <div class="stack-item"><span>Datos</span><strong>CoinGecko • Etherscan • Mempool</strong></div>
-            <div class="stack-item"><span>Wallet</span><strong>Web3 + custodio descentralizado</strong></div>
-            <div class="stack-item"><span>Entorno</span><strong>Termux • ISH Alpine Linux</strong></div>
+            <div class="stack-item glass-panel"><span>Frontend</span><strong>HTML / CSS / JS</strong></div>
+            <div class="stack-item glass-panel"><span>IA</span><strong>Llama / agentes</strong></div>
+            <div class="stack-item glass-panel"><span>Datos</span><strong>CoinGecko • Etherscan • Mempool</strong></div>
+            <div class="stack-item glass-panel"><span>Wallet</span><strong>Web3 + control descentralizado</strong></div>
+            <div class="stack-item glass-panel"><span>Entorno</span><strong>Termux • ISH Alpine Linux</strong></div>
           </div>
         </div>
       </section>
 
-      <section id="wallet" class="section">
-        <div class="container wallet-layout">
-          <div class="wallet-panel">
-            <div class="panel-header">
-              <h3>Wallet inteligente</h3>
-              <span class="chip neutral">Descentralizado</span>
-            </div>
-
-            <div class="wallet-balance">
-              <small>Balance total</small>
-              <h4>$284,620.42</h4>
-            </div>
-
-            <div class="coin-row">
-              <span>BTC</span>
-              <strong>2.34 BTC</strong>
-              <em>$145,440</em>
-            </div>
-            <div class="coin-row">
-              <span>ETH</span>
-              <strong>16.8 ETH</strong>
-              <em>$58,430</em>
-            </div>
-            <div class="coin-row">
-              <span>SOL</span>
-              <strong>128.2 SOL</strong>
-              <em>$43,760</em>
-            </div>
-          </div>
-
-          <div class="info-copy">
-            <span class="eyebrow">Operación segura</span>
-            <h2>Un control total sobre activos, balances y señales de mercado.</h2>
+      <section id="dashboard" class="section">
+        <div class="container dashboard-section">
+          <div class="dashboard-info">
+            <span class="eyebrow">Dashboard</span>
+            <h2>Panel operativo de mercado, billetera y automatización.</h2>
             <p>
-              BOCH-NEXO-MX está pensado para centralizar datos, automatizar flujos
-              y ofrecer una vista clara para gestionar carteras, protocolos y
-              alertas con mayor consistencia.
+              Centraliza el flujo de información más importante para analizar tendencias, controlar balances y reaccionar ante cambios clave del ecosistema cripto.
             </p>
             <ul>
-              <li>Monitoreo de balances y movimientos</li>
-              <li>Alertas por volatilidad y cambios clave</li>
-              <li>Integración con mercado, chain data y wallet</li>
+              <li>Monitoreo de balances y transacciones</li>
+              <li>Alertas por volatilidad</li>
+              <li>Integración con APIs de mercado</li>
+              <li>Operación multi-device</li>
             </ul>
+          </div>
+
+          <div class="analytics-panel glass-panel">
+            <div class="analytics-header">
+              <div>
+                <span>Resumen</span>
+                <h3>$284.6K</h3>
+              </div>
+              <span class="chip success">+12.4%</span>
+            </div>
+
+            <div class="mini-stats">
+              <div>
+                <small>BTC</small>
+                <strong>$145.4K</strong>
+              </div>
+              <div>
+                <small>ETH</small>
+                <strong>$58.4K</strong>
+              </div>
+              <div>
+                <small>SOL</small>
+                <strong>$43.7K</strong>
+              </div>
+            </div>
+
+            <div class="line-chart" aria-label="Gráfico de tendencia">
+              <span class="line line-a"></span>
+              <span class="line line-b"></span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="roadmap" class="section alt">
+      <section id="pricing" class="section alt pricing-section">
         <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow">Roadmap</span>
-            <h2>Fases de construcción</h2>
+          <div class="section-heading pricing-heading">
+            <div>
+              <span class="eyebrow">Precios</span>
+              <h2>Elige tu nivel de acceso.</h2>
+            </div>
+            <div class="billing-toggle" aria-label="Selector de facturación">
+              <button class="toggle-btn active" data-billing="monthly" type="button">Mensual</button>
+              <button class="toggle-btn" data-billing="yearly" type="button">Anual</button>
+            </div>
           </div>
 
-          <div class="roadmap-grid">
-            <div class="roadmap-item">
-              <span>01</span>
-              <h3>Landing</h3>
-              <p>Presentación de marca, suite y propuestas de valor.</p>
-            </div>
-            <div class="roadmap-item">
-              <span>02</span>
-              <h3>Dashboard</h3>
-              <p>Visualización de balances, APIs y flujos clave.</p>
-            </div>
-            <div class="roadmap-item">
-              <span>03</span>
-              <h3>IA + automatización</h3>
-              <p>Agentes inteligentes para análisis y ejecución.</p>
-            </div>
-            <div class="roadmap-item">
-              <span>04</span>
-              <h3>Web3 y móvil</h3>
-              <p>Wallet y entorno móvil con soporte multi-device.</p>
-            </div>
+          <div class="pricing-grid">
+            <article class="pricing-card glass-panel">
+              <span class="plan-name">Starter</span>
+              <h3 class="price" data-monthly="$29" data-yearly="$24">$29</h3>
+              <p>Ideal para empezar a monitorizar y operar con herramientas esenciales.</p>
+              <ul>
+                <li>Dashboard básico</li>
+                <li>Monitoreo de 3 activos</li>
+                <li>APIs configuradas</li>
+                <li>Soporte por email</li>
+              </ul>
+              <a href="#contact" class="btn btn-secondary full-width">Comenzar</a>
+            </article>
+
+            <article class="pricing-card featured glass-panel">
+              <span class="plan-badge">Más popular</span>
+              <span class="plan-name">Pro</span>
+              <h3 class="price" data-monthly="$79" data-yearly="$64">$79</h3>
+              <p>Para usuarios que quieren automatización, IA y control total del sistema.</p>
+              <ul>
+                <li>Acceso completo a suite</li>
+                <li>IA Llama integrada</li>
+                <li>Wallet + alertas</li>
+                <li>Soporte prioritario</li>
+              </ul>
+              <a href="#contact" class="btn btn-primary full-width">Elegir Pro</a>
+            </article>
+
+            <article class="pricing-card glass-panel">
+              <span class="plan-name">Enterprise</span>
+              <h3 class="price" data-monthly="$149" data-yearly="$119">$149</h3>
+              <p>Solución avanzada para infraestructura, operaciones y automatización institucional.</p>
+              <ul>
+                <li>Infraestructura personalizada</li>
+                <li>Integraciones a medida</li>
+                <li>Soporte 24/7</li>
+                <li>Acceso por equipo</li>
+              </ul>
+              <a href="#contact" class="btn btn-secondary full-width">Hablar con ventas</a>
+            </article>
           </div>
         </div>
       </section>
@@ -293,7 +327,7 @@
             <span class="brand-mark">B</span>
             <span>BOCH-NEXO-MX</span>
           </div>
-          <p>Sistema integral para México: cripto, IA y automatización.</p>
+          <p>Sistema integral para México: cripto, IA, automatización y seguridad.</p>
         </div>
 
         <a class="btn btn-primary" href="mailto:contacto@bochnexo.mx">Solicitar acceso</a>
@@ -304,4 +338,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
