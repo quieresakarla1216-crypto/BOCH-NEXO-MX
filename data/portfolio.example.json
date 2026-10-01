@@ -1,0 +1,9 @@
+{
+  "currency": "usd",
+  "updatedAt": null,
+  "assets": [
+    { "symbol": "BTC", "coingeckoId": "bitcoin", "quantity": 0, "costBasis": 0 },
+    { "symbol": "ETH", "coingeckoId": "ethereum", "quantity": 0, "costBasis": 0 },
+    { "symbol": "SOL", "coingeckoId": "solana", "quantity": 0, "costBasis": 0 }
+  ]
+}

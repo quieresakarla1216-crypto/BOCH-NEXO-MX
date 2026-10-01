@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+data/portfolio.json
+.DS_Store
+*.log
+
+# Secretos de Apple/Xcode
+*.p8
+*.p12
+*.mobileprovision
