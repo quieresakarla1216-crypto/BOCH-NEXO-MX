@@ -1,0 +1,41 @@
+from __future__ import annotations
+
+import json
+import os
+from pathlib import Path
+from typing import Any, Dict, List
+
+
+class SimpleLedger:
+    def __init__(self, file_path: str | os.PathLike[str] = "ledger.json") -> None:
+        self.file_path = Path(file_path)
+        self.file_path.parent.mkdir(parents=True, exist_ok=True)
+
+    def load(self) -> List[Dict[str, Any]]:
+        if not self.file_path.exists():
+            return []
+        try:
+            return json.loads(self.file_path.read_text(encoding="utf-8"))
+        except Exception:
+            return []
+
+    def append(self, entry: Dict[str, Any]) -> None:
+        entries = self.load()
+        entries.append(entry)
+        self.file_path.write_text(json.dumps(entries, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    def export_csv(self, output_path: str | os.PathLike[str]) -> None:
+        entries = self.load()
+        if not entries:
+            Path(output_path).write_text("date,category,description,amount,reference\n", encoding="utf-8")
+            return
+
+        keys = list(entries[0].keys())
+        lines = [",".join(keys)]
+        for entry in entries:
+            row = [str(entry.get(key, "")) for key in keys]
+            lines.append(",".join(row))
+        Path(output_path).write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+__all__ = ["SimpleLedger"]

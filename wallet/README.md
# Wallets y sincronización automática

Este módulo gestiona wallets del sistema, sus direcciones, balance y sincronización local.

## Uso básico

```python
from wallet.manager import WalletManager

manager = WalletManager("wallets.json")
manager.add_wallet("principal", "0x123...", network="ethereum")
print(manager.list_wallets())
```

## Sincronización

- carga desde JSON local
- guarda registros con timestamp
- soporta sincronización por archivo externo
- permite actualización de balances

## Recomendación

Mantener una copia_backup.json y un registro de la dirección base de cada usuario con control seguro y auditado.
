@@ -1,0 +1,109 @@
+from __future__ import annotations
+
+import json
+import os
+from dataclasses import asdict, dataclass, field
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+
+@dataclass
+class WalletRecord:
+    name: str
+    address: str
+    network: str = "ethereum"
+    balance: float = 0.0
+    source: str = "manual"
+    last_sync: Optional[str] = None
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+
+class WalletManager:
+    def __init__(self, storage_path: str | Path = "wallets.json") -> None:
+        self.storage_path = Path(storage_path)
+        self.storage_path.parent.mkdir(parents=True, exist_ok=True)
+        self.wallets: List[WalletRecord] = []
+        self.load()
+
+    def load(self) -> None:
+        if not self.storage_path.exists():
+            self.wallets = []
+            return
+
+        try:
+            raw = json.loads(self.storage_path.read_text(encoding="utf-8"))
+            self.wallets = [WalletRecord(**item) for item in raw]
+        except Exception:
+            self.wallets = []
+
+    def save(self) -> None:
+        payload = [asdict(item) for item in self.wallets]
+        self.storage_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    def add_wallet(self, name: str, address: str, network: str = "ethereum", source: str = "manual", metadata: Optional[Dict[str, Any]] = None) -> WalletRecord:
+        wallet = WalletRecord(
+            name=name,
+            address=address,
+            network=network,
+            source=source,
+            metadata=metadata or {},
+        )
+        self.wallets.append(wallet)
+        self.save()
+        return wallet
+
+    def get_wallet(self, name: str) -> Optional[WalletRecord]:
+        for wallet in self.wallets:
+            if wallet.name.lower() == name.lower():
+                return wallet
+        return None
+
+    def list_wallets(self) -> List[WalletRecord]:
+        return self.wallets
+
+    def remove_wallet(self, name: str) -> bool:
+        before = len(self.wallets)
+        self.wallets = [w for w in self.wallets if w.name.lower() != name.lower()]
+        if len(self.wallets) != before:
+            self.save()
+            return True
+        return False
+
+    def update_balance(self, name: str, balance: float, last_sync: Optional[str] = None) -> Optional[WalletRecord]:
+        wallet = self.get_wallet(name)
+        if wallet is None:
+            return None
+        wallet.balance = float(balance)
+        wallet.last_sync = last_sync or __import__("datetime").datetime.utcnow().isoformat(timespec="seconds") + "Z"
+        self.save()
+        return wallet
+
+    def sync_from_file(self, file_path: str | os.PathLike[str]) -> List[WalletRecord]:
+        file_path = Path(file_path)
+        if not file_path.exists():
+            return []
+
+        try:
+            raw = json.loads(file_path.read_text(encoding="utf-8"))
+            if isinstance(raw, list):
+                for item in raw:
+                    name = item.get("name")
+                    address = item.get("address")
+                    if not name or not address:
+                        continue
+                    existing = self.get_wallet(name)
+                    if existing is None:
+                        self.add_wallet(name=name, address=address, network=item.get("network", "ethereum"), source=item.get("source", "sync"), metadata=item.get("metadata", {}))
+                    else:
+                        existing.address = address
+                        existing.network = item.get("network", existing.network)
+                        existing.source = item.get("source", existing.source)
+                        existing.metadata = item.get("metadata", existing.metadata)
+                self.save()
+        except Exception:
+            pass
+
+        return self.wallets
+
+
+__all__ = ["WalletManager", "WalletRecord"]

@@ -1,0 +1,40 @@
+from __future__ import annotations
+
+
+class CaesarCipher:
+    def __init__(self, shift: int = 3) -> None:
+        self.shift = shift % 26
+
+    def encrypt(self, text: str) -> str:
+        return self._transform(text, self.shift)
+
+    def decrypt(self, text: str) -> str:
+        return self._transform(text, -self.shift)
+
+    def _transform(self, text: str, shift: int) -> str:
+        result = []
+        for ch in text:
+            if ch.isalpha():
+                base = ord('A') if ch.isupper() else ord('a')
+                offset = (ord(ch) - base + shift) % 26
+                result.append(chr(base + offset))
+            else:
+                result.append(ch)
+        return "".join(result)
+
+
+def xor_encrypt(data: str, key: str) -> str:
+    out = []
+    for i, ch in enumerate(data):
+        out.append(chr(ord(ch) ^ ord(key[i % len(key)])))
+    return "".join(out)
+
+
+def xor_decrypt(data: str, key: str) -> str:
+    out = []
+    for i, ch in enumerate(data):
+        out.append(chr(ord(ch) ^ ord(key[i % len(key)])))
+    return "".join(out)
+
+
+__all__ = ["CaesarCipher", "xor_encrypt", "xor_decrypt"]
