@@ -1,0 +1,71 @@
+security/seed_manager.py
+from __future__ import annotations
+
+import hashlib
+import os
+import secrets
+from pathlib import Path
+from typing import List
+
+
+class SeedManager:
+    """Gestor de semilla offline para entorno seguro y de pruebas."""
+
+    WORDS = [
+        "abandon", "ability", "able", "about", "above", "absent", "absorb", "abstract", "absurd", "abuse",
+        "access", "accident", "account", "accuse", "achieve", "acid", "acoustic", "acquire", "across", "act",
+        "action", "actor", "actress", "actual", "adapt", "add", "addict", "address", "adjust", "admit",
+        "adult", "advance", "advice", "aerobic", "affair", "afford", "afraid", "again", "age", "agent",
+        "agree", "ahead", "aim", "air", "airport", "aisle", "alarm", "album", "alcohol", "alert",
+        "alien", "all", "alley", "allow", "almost", "alone", "alpha", "already", "also", "alter",
+        "always", "amateur", "amazing", "among", "amount", "amused", "analyst", "anchor", "ancient", "anger",
+        "angle", "angry", "animal", "ankle", "announce", "annual", "another", "answer", "antenna", "antique",
+        "anxiety", "any", "apart", "apology", "appear", "apple", "approve", "april", "arch", "arctic",
+        "area", "arena", "argue", "arm", "armed", "armor", "army", "around", "arrange", "arrest",
+        "arrive", "arrow", "art", "artefact", "artist", "artwork", "ask", "aspect", "assault", "asset",
+        "assist", "assume", "asthma", "athlete", "atom", "attack", "attend", "attitude", "attract", "auction",
+        "audit", "august", "aunt", "author", "auto", "autumn", "average", "avocado", "avoid", "awake",
+        "aware", "away", "awesome", "awful", "awkward", "axis", "baby", "bachelor", "bacon", "badge",
+        "bag", "balance", "balcony", "ball", "bamboo", "banana", "banner", "bar", "barely", "bargain",
+        "barrel", "base", "basic", "basket", "battle", "beach", "bean", "beauty", "because", "become",
+        "beef", "before", "begin", "behave", "behind", "believe", "below", "belt", "bench", "benefit",
+        "best", "betray", "better", "between", "beyond", "bicycle", "bid", "bike", "bind", "biology",
+        "bird", "birth", "bitter", "black", "blade", "blame", "blanket", "blast", "bleak", "bless",
+    ]
+
+    @classmethod
+    def generate_seed(cls, word_count: int = 24) -> List[str]:
+        if word_count % 3 != 0:
+            raise ValueError("La cantidad de palabras debe ser múltiplo de 3")
+        words = []
+        for _ in range(word_count):
+            words.append(cls.WORDS[secrets.randbelow(len(cls.WORDS))])
+        return words
+
+    @classmethod
+    def hash_seed(cls, words: List[str]) -> str:
+        phrase = " ".join(words)
+        return hashlib.sha256(phrase.encode("utf-8")).hexdigest()
+
+    @staticmethod
+    def store_offline(words: List[str], file_path: str | Path) -> None:
+        path = Path(file_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("\n".join(words), encoding="utf-8")
+
+    @staticmethod
+    def read_offline(file_path: str | Path) -> List[str]:
+        path = Path(file_path)
+        if not path.exists():
+            return []
+        text = path.read_text(encoding="utf-8")
+        return [line.strip() for line in text.splitlines() if line.strip()]
+
+
+__all__ = ["SeedManager"]
+
+
+if __name__ == "__main__":
+    words = SeedManager.generate_seed(24)
+    print(words)
+    print(SeedManager.hash_seed(words))

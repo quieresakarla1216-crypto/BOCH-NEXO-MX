@@ -1,0 +1,204 @@
+# BOCH-NEXO-MX
+
+Sistema digital seguro, modular y humano para México y el mundo.
+
+## Misión
+
+Crear infraestructura digital legal, útil y transparente para apoyar a personas, comunidades y negocios, con foco en la seguridad del usuario, la protección de datos y el apoyo real a la sociedad.
+
+## Visión
+
+Ser una plataforma modular de infraestructura digital que combine seguridad, IA, automatización, finanzas, cadena de registros y apoyo humanitario en un ecosistema confiable, responsable y claro.
+
+## Principios
+
+- Transparencia total
+- Seguridad por diseño
+- Protección de usuarios vulnerables
+- Respeto a la ley y la integridad
+- Apoyo real a la comunidad
+- Tecnología útil y no manipuladora
+- No violencia, no armas, no engaño
+- Honestidad y responsabilidad profesional
+
+## Política ética
+
+BOCH-NEXO-MX no apoyará ni promoverá:
+- guerra, armas o violencia
+- fraude, engaño o manipulación
+- explotación de personas
+- abuso de datos o privacidad
+- actividades que perjudiquen a comunidades vulnerables
+
+El proyecto se orienta a:
+- seguridad personal y digital
+- apoyo humanitario real
+- infraestructura útil y legal
+- crecimiento responsable y sostenible
+
+## Objetivos del proyecto
+
+- IA local y modular
+- terminal web segura
+- APIs financieras y blockchain
+- billeteras y sincronización segura
+- gestión de identidad y registros
+- cifrado local y almacenamiento protegido
+- fondo humanitario y apoyo comunitario
+- cumplimiento básico con claridad y responsabilidad
+
+## Estructura del repositorio
+
+```text
+BOCH-NEXO-MX/
+├── README.md
+├── LICENSE
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
+├── GOVERNANCE.md
+├── HUMANITARIAN_FUND.md
+├── requirements.txt
+├── pyproject.toml
+├── Makefile
+├── main.py
+├── ai/
+│   ├── __init__.py
+│   ├── boch_ai.py
+│   ├── llama_manager.py
+│   └── plugins/
+│       ├── __init__.py
+│       ├── coingecko.py
+│       ├── etherscan.py
+│       ├── mempool.py
+│       └── market_router.py
+├── api/
+│   ├── __init__.py
+│   └── market.py
+├── wallet/
+│   ├── __init__.py
+│   ├── manager.py
+│   ├── sync.py
+│   ├── ledger.py
+│   └── README.md
+├── security/
+│   ├── __init__.py
+│   ├── encryption.py
+│   ├── identity.py
+│   ├── seed_manager.py
+│   └── offline_store.py
+├── web/
+│   ├── app.py
+│   ├── index.html
+│   ├── styles.css
+│   └── terminal.js
+├── tools/
+│   ├── __init__.py
+│   └── scraper.py
+├── docs/
+│   ├── termux.md
+│   ├── alpine.md
+│   ├── arch.md
+│   └── legal.md
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── .gitignore
+└── config/
+    ├── .env.example
+    └── boch_memory.json
+```
+
+## Stack sugerido
+
+- Python 3.11+
+- FastAPI
+- HTML / CSS / JavaScript
+- APIs financieras y blockchain
+- IA local con Llama / Ollama
+- cifrado básico y soporte local seguro
+- sincronización de wallets y registros
+
+## Seguridad y privacidad
+
+El sistema contempla:
+- control de identidad local
+- PIN y validación del usuario
+- semillas BIP39 en entorno offline
+- almacenamiento protegido con cifrado
+- registro de operaciones con ledger local
+- separación de módulos de firma, sincronización y almacenamiento
+- respaldo seguro y auditoría local
+
+## Módulos principales
+
+### Wallet
+- registro de billeteras
+- verificación de balance
+- sincronización automática
+- auditoría local y historial
+
+### Seguridad
+- cifrado César / XOR / hashes básicos
+- gestión de semilla para pruebas offline
+- identidad verificada localmente
+- almacenamiento seguro sin copias automatizadas hacia la nube
+
+### APIs
+- CoinGecko
+- Etherscan
+- Mempool
+- router unificado para consultas financieras
+
+### IA
+- soporte para asistente local
+- plugins para datos de mercado y procesos
+- integración con modelos ligeros para terminal local
+
+## Apoyo humanitario
+
+El proyecto contempla un fondo de apoyo y canales de ayuda real para:
+- emergencias
+- salud
+- educación
+- comunidades vulnerables
+- crisis sociales y ambientales
+
+Toda contribución humanitaria debe ser verificable, transparente y responsable.
+
+## Instalación rápida
+
+```bash
+git clone https://github.com/quieresakarla1216-crypto/BOCH-NEXO-MX.git
+cd BOCH-NEXO-MX
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python main.py
+```
+
+## Ejecutar terminal web
+
+```bash
+cd web
+python app.py
+```
+
+Luego abre en navegador:
+- http://localhost:8000
+
+## Licencia
+
+Este proyecto se distribuye bajo la licencia GNU Affero General Public License v3.0.
+
+## Créditos
+
+- Otilio Julián Arredondo Linares
+- bochmen3
+
+## Nota final
+
+BOCH-NEXO-MX está orientado a infraestructura útil, legal, segura y responsable. No se promueve la violencia ni el engaño. El enfoque es apoyar, proteger, construir y servir a la comunidad.
+
+---
+
+BOCH-NEXO-MX • Tecnología útil, segura y humana.

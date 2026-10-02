@@ -1,0 +1,45 @@
+security/encryption.py
+from __future__ import annotations
+
+import hashlib
+
+
+class CaesarCipher:
+    def __init__(self, shift: int = 3) -> None:
+        self.shift = shift % 26
+
+    def encrypt(self, text: str) -> str:
+        return self._transform(text, self.shift)
+
+    def decrypt(self, text: str) -> str:
+        return self._transform(text, -self.shift)
+
+    def _transform(self, text: str, shift: int) -> str:
+        out = []
+        for ch in text:
+            if ch.isalpha():
+                base = ord("A") if ch.isupper() else ord("a")
+                out.append(chr(base + ((ord(ch) - base + shift) % 26)))
+            else:
+                out.append(ch)
+        return "".join(out)
+
+
+def xor_encrypt(data: str, key: str) -> str:
+    if not key:
+        raise ValueError("La clave no puede estar vacía")
+    out = []
+    for i, ch in enumerate(data):
+        out.append(chr(ord(ch) ^ ord(key[i % len(key)])))
+    return "".join(out)
+
+
+def xor_decrypt(data: str, key: str) -> str:
+    return xor_encrypt(data, key)
+
+
+def sha256_digest(data: str) -> str:
+    return hashlib.sha256(data.encode("utf-8")).hexdigest()
+
+
+__all__ = ["CaesarCipher", "xor_encrypt", "xor_decrypt", "sha256_digest"]

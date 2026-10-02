@@ -1,0 +1,49 @@
+wallet/ledger.py
+from __future__ import annotations
+
+import csv
+import json
+from pathlib import Path
+from typing import Any, Dict, List
+
+
+class Ledger:
+    def __init__(self, file_path: str | Path = "ledger.json") -> None:
+        self.file_path = Path(file_path)
+        self.file_path.parent.mkdir(parents=True, exist_ok=True)
+
+    def load(self) -> List[Dict[str, Any]]:
+        if not self.file_path.exists():
+            return []
+        try:
+            data = json.loads(self.file_path.read_text(encoding="utf-8"))
+            return data if isinstance(data, list) else []
+        except Exception:
+            return []
+
+    def append(self, entry: Dict[str, Any]) -> None:
+        entries = self.load()
+        entries.append(entry)
+        self.file_path.write_text(json.dumps(entries, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    def export_csv(self, output_path: str | Path) -> None:
+        output = Path(output_path)
+        entries = self.load()
+        if not entries:
+            output.write_text("date,category,description,amount,reference\n", encoding="utf-8")
+            return
+
+        fieldnames = list(entries[0].keys())
+        with output.open("w", newline="", encoding="utf-8") as fh:
+            writer = csv.DictWriter(fh, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(entries)
+
+
+__all__ = ["Ledger"]
+
+
+if __name__ == "__main__":
+    l = Ledger("ledger.json")
+    l.append({"date": "2026-10-02", "category": "test", "description": "init", "amount": 0, "reference": "boot"})
+    print("ok")
